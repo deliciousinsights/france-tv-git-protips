@@ -15,6 +15,7 @@
 .reveal {
   font-family: 'Source Sans', sans-serif;
   letter-spacing: 0;
+  font-size: 28px;
 }
 
 .reveal h1,
@@ -29,12 +30,16 @@
   line-height: 1em;
 }
 
+.reveal h1 {
+  font-size: 3.57em;
+}
+
 .reveal tt,
 .reveal code,
 .reveal pre {
   font-family: 'Operator Mono Ssm', 'Source Code Pro', Menlo, Monaco, Consolas,
     monospace;
-  font-size: 0.85em;
+  font-size: 0.8em;
   line-height: 1.3em;
 }
 
@@ -428,4 +433,8 @@ b.hl {
 .command-line code i {
   font-style: normal;
   color: #999;
+}
+
+.reveal .controls div.enabled {
+  opacity: 0.4;
 }

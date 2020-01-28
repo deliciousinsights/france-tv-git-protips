@@ -43,7 +43,8 @@
 				<section id="mainTitle">
 					<h1>Git Pro Tips • Édition 2020</h1>
 					<p>
-						Une présentation de <a href="http://tddsworld.com/">Christophe Porteneuve</a> chez France TV Éditions Numériques</a>
+            Une présentation de <a href="http://tddsworld.com/">Christophe Porteneuve</a><br/>
+            chez France TV Éditions Numériques</a>
 					</p>
 				</section>
 
@@ -55,7 +56,8 @@ const christophe = {
   family: { wife: 'Élodie', sons: ['Maxence', 'Elliott'] },
   city: 'Paris, FR',
   company: 'Delicious Insights',
-  trainings: ['Git Total', 'ES Total', 'Web Apps Modernes', 'Node.js', 'Webpack', 'Archi. CSS'],
+  trainings: ['Git Total', 'ES Total', 'Web Apps Modernes', 'Node.js',
+    'Webpack', 'Archi. CSS'],
   webDevSince: 1995,
   mightBeKnownFor: [
     'dotJS',
@@ -271,7 +273,7 @@ const christophe = {
           <section id="commits-unstage">
             <h2>Unstage</h2>
 
-            <p>Sortir un snapshot du <span lang="en">stage</span> : <code>git reset</code> (historique) ou <code>git restore --staged</code> (2.23+, août 2019).</p>
+            <p>Sortir un snapshot du <span lang="en">stage</span> : <code>git reset</code> (historique)<br/>ou <code>git restore --staged</code> (2.23+, août 2019).</p>
 
             <pre class="command-line" data-prompt="$" data-output="2-20"><code class="language-bash">
               git <u>restore --staged index.html</u>
@@ -341,7 +343,7 @@ const christophe = {
           </section>
 
           <section id="commits-show">
-            <h2>Visualiser un commit, un snapshot</h2>
+            <h2>Visualiser un commit / snapshot</h2>
 
             <p><code>git show [object]</code> permet d’afficher au mieux un commit (par défaut <code>HEAD</code>), une arbo, un snapshot (blob)…</p>
 
@@ -388,10 +390,10 @@ HEAD is now at 8a5a383 Trackers GA asynchrones
 
             <p>Pour récupérer le stash, évitez <code>apply</code>, préférez un <code>pop</code> :</p>
 
-            <pre class="command-line" data-prompt="$" data-output="2-20"><code class="language-bash">
-(master $) $ <u>git stash pop --index</u>
+            <pre class="command-line" data-prompt=" " data-output="2-20"><code class="language-bash">
+<i>(master $) $</i> <u>git stash pop --index</u>
 …
-(master *+%) $
+<i>(master *+%) $</i>
             </code></pre>
 
             <p class="breathing"><code>pop</code> tente l’<code>apply</code>, et s’il marche enchaîne avec <code>drop</code>.  Rien de pire que de laisser traîner un stash réintégré…</p>
@@ -403,7 +405,7 @@ HEAD is now at 8a5a383 Trackers GA asynchrones
 				<section>
           <section id="logs">
             <h1>Des logs utiles</h1>
-            <h3>Passer la 5ème avec git log</h3>
+            <h3>Passer la 5ème avec <code>git log</code></h3>
           </section>
 
           <section id="logs-lg">
@@ -411,7 +413,7 @@ HEAD is now at 8a5a383 Trackers GA asynchrones
 
             <pre class="command-line" data-prompt="$"><code class="language-bash">
               LOG_FORMAT='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset'
-              git config --global <u>alias.lg</u> "log <u>--graph</u> --date=relative <u>--pretty=tformat:</u>'$LOG_FORMAT'"
+              git config --global <u>alias.lg</u> "log <u>--graph</u> <u>--pretty=tformat:</u>'$LOG_FORMAT'" --date=relative
               git config --global <u>log.abbrevCommit</u> true
               git config --global <u>log.follow</u> true
               git config --global <u>grep.extendedRegexp</u> true
@@ -427,16 +429,16 @@ HEAD is now at 8a5a383 Trackers GA asynchrones
 
             <p>Par références aval/amont</p>
             <pre class="command-line" data-prompt="$"><code class="language-bash">
-              git lg <i>[ref…]</i> <i>[</i>^<i>neg-ref…]</i> # Liste spécifique aval
-              git lg <i>ref</i>.. # Amont
-              git lg [--branches<i>[=glob]|</i>--tags<i>[=glob]|</i>--all<i>]</i> <i>[</i>--exclude<i>=glob]</i> # Wildcards aval
+              git lg <i>[ref…]</i> <i>[</i>^<i>neg-ref…]</i> # Liste spécifique amont
+              git lg <i>ref</i>.. # Aval
+              git lg [--branches<i>[=glob]|</i>--tags<i>[=glob]|</i>--all<i>]</i> <i>[</i>--exclude<i>=glob]</i> # Amont
               git lg -<i>n</i> # Nombre de commits listés
             </code></pre>
 
             <p>Par métadonnées</p>
 
             <pre class="command-line" data-prompt="$"><code class="language-bash">
-              git lg --grep <i>'fragment du message complet'</i> <i>[</i>--invert-grep<i>] [</i>--all-match<i>] [</i>-i<i>]</i>
+              git lg --grep <i>'fragment du message complet'</i> <i>[</i>--invert-grep<i>] [</i>-i<i>] [</i>--all-match<i>]</i>
               git lg --author <i>'fragment du noms e-mail de l’auteur·e'</i> <i>[</i>-i<i>]</i>
               git lg --<i>[</i>no-<i>]</i>merges
               git lg -- <i>pathspec…</i>
@@ -452,7 +454,8 @@ $ git lg --author=patter --grep '^Merge' -10 -- activerecord activemodel
           <section id="logs-divergence">
             <h2>Loguer la divergence</h2>
 
-            <p>Besoin de voir les commits uniques de 2 branches/tags ? (en gros, remonter juste à leur ancêtre commun).<br/>
+            <p>Besoin de voir les commits uniques de 2 branches/tags ?<br/>
+              (en gros, remonter juste à leur ancêtre commun).
               Utilisez <code>A...B</code>.</p>
 
             <pre class="command-line" data-prompt="$"><code class="language-bash">
@@ -482,9 +485,7 @@ $ git lg --author=patter --grep '^Merge' -10 -- activerecord activemodel
           <section id="logs-diff-search">
             <h2>Trouver le coupable</h2>
 
-            <p><code>git blame</code>, c’est comme le H de Hawaii : <strong>ça ne sert à rien</strong>.</p>
-
-            <p>Préférez chercher sur <strong>les contenus actifs des diffs</strong> : c’est plus pertinent <em>et</em> ça marche aussi pour des lignes virées !</p>
+            <p><code>git blame</code>, c’est comme le H de Hawaii : <strong>ça ne sert à rien</strong>. Cherchez plutôt <strong>le contenu actif des diffs</strong> : c’est plus pertinent <em>et</em> ça marche pour des lignes virées !</p>
 
             <p>Options <code>-S</code>* (insertions OU suppressions) et <code>-G</code> (tous diffs).</p>
 
@@ -510,7 +511,7 @@ git lg <u>-S "Donec sed"</u> -1 <u>-p</u> index.html
 
             <p>Il y a un filtrage de fou sur le log : par fragment de fichier, notamment par <strong>corps de fonction</strong>.  On utilise soit un intervalle (ex. <code>-L 1,100:index.html</code>) soit en fournissant une regex pour la fonction englobante :</p>
 
-            <pre class="command-line" data-prompt="$" data-output="2-100"><code class="language-bash" style="font-size: 65%">
+            <pre class="command-line" data-prompt="$" data-output="2-100"><code class="language-bash" style="font-size: 60%">
 git lg <u>-L :getCheckIns:</u>app/lib/persistence.js
 * 12164bc - Refactoring gestion Check-In Details, et gestion corner-cases (Christophe Porteneuve 2 days ago)
 |
@@ -586,7 +587,8 @@ To git@github.com:tdd/private-tests.git
             <h2>Nettoyer avant push</h2>
             <h3>Le bordel OK, mais chez toi</h3>
 
-            <p>Réflexe pré-push : nettoyer ton historique local, lequel est <a href="https://delicious-insights.com/fr/articles/bien-utiliser-git-merge-et-rebase/#nettoyer-son-historique-local-avant-envoi">forcément plus ou moins en bordel</a>.</p>
+            <p>Réflexe pré-push : nettoyer ton historique local, lequel est<br/>
+              <a href="https://delicious-insights.com/fr/articles/bien-utiliser-git-merge-et-rebase/#nettoyer-son-historique-local-avant-envoi">forcément plus ou moins en bordel</a>.</p>
 
             <pre class="command-line" data-prompt="$"><code class="language-bash">
               git lg @{u}..
@@ -594,7 +596,7 @@ To git@github.com:tdd/private-tests.git
             </code></pre>
 
             <p class="breathing">Le <strong>rebase interactif</strong> nous permet de mettre au propre nos travaux locaux avant de partager tout ça avec les copains.</p>
-            <p>Raison de plus pour <strong>ne pas faire de pushes trop souvent</strong>. On est pas en SVN, les copains !  On pond des commits souvent (10–30 &times/j), mais on push plus rarement (2–3 &times/j)</p>
+            <p>Raison de plus pour <strong>ne pas faire de pushes trop souvent</strong>. On est pas en SVN, les gens !  On committe souvent (10–30 &times/j), mais on pushe plus rarement (2–3 &times/j).</p>
           </section>
 
           <section id="pushes-pull-merge">
@@ -613,11 +615,10 @@ To git@github.com:tdd/private-tests.git
           <section id="pushes-pull-rebase-preserve">
             <h2>Pull = Rebase</h2>
 
-            <p>Un <code>pull</code> devrait plutôt <strong>rejouer notre taf local sur la branche distante à jour</strong> : par définition, un <code>rebase</code>.</p>
+            <p>Un <code>pull</code> devrait plutôt <strong>rejouer notre taf local sur la branche distante à jour</strong> :<br/>
+              par définition, un <code>rebase</code>.</p>
 
-            <p>Il faut juste <a href="https://delicious-insights.com/fr/articles/bien-utiliser-git-merge-et-rebase/#le-cas-pineux-du-pull-qui-rebase-un-merge-local">faire attention</a> à ne pas <span lang="en">inliner</span> par inadvertance un <code>merge</code> au sein du travail local.</p>
-
-            <p>Une bonne fois pour toutes :</p>
+            <p>Il faut juste <a href="https://delicious-insights.com/fr/articles/bien-utiliser-git-merge-et-rebase/#le-cas-pineux-du-pull-qui-rebase-un-merge-local">faire attention</a> à ne pas <span lang="en">inliner</span> par inadvertance un <code>merge</code> au sein du travail local. Ça peut se caler une bonne fois pour toutes :</p>
 
             <pre class="command-line" data-prompt="$" data-output="2-20"><code class="language-bash">
               git config --global <u>pull.rebase merges</u>
@@ -683,7 +684,8 @@ To git@github.com:tdd/private-tests.git
               git <u>cherry-pick -x</u> 3-2-stable
             </code></pre>
 
-            <p>On liste les commits candidats avec <code>git log --cherry</code> (je préfère à <code>git cherry</code>) :</p>
+            <p>On liste les commits candidats avec <code>git log --cherry</code><br/>
+              (je préfère ça plutôt que <code>git cherry</code>) :</p>
 
             <pre class="command-line" data-prompt="$" data-output="2-20"><code class="language-bash">
               git <u>lg --cherry HEAD...topic</u>
@@ -705,13 +707,13 @@ To git@github.com:tdd/private-tests.git
               git mergetool <i>path</i>
               # Une fois que les conflits sont réglés*, on le dit :
               git add <i>path</i>
-              # Si on a mal arbitré (notammment mergetool) ou que le style de marqueurs nous gêne :
+              # Si on a mal arbitré ou que le style de marqueurs nous gêne :
               git checkout --conflict=<i>(</i>merge<i>|</i>diff3<i>) path</i>
               # Besoin de voir un des 3 snapshots sans mergetool ?
               git show <i>(</i>ref<i>|</i>MERGE_HEAD<i>|</i>HEAD<i>|</i>:1<i>)</i>:<i>path</i>
-              # Envie de récupérer le fichier tel quel depuis une des branches, ou ailleurs ?
+              # Envie de récupérer le fichier tel quel depuis une branche, ou ailleurs ?
               git checkout <i>ref</i> <i>[</i>--<i>]</i> <i>path</i>
-              # Ou la version verbeuse : git restore --source=ref --staged --worktree [--] path
+              # Ou verbeux : git restore --source=ref --staged --worktree [--] path
             </code></pre>
 
             <footer>* C‘est ça qui est souvent simple mais peut parfois nécessiter plus d’infos</footer>
@@ -722,9 +724,7 @@ To git@github.com:tdd/private-tests.git
 
             <p>Parfois le diff ne suffit pas, notamment quand le code en conflit
             fait référence à d’autres parties du code qui ont, elles, bien
-            fusionné, noyant le contexte. Disons qu’on a fait un <code>git merge truth</code> dans <code>master</code>.</p>
-
-            <p>On peut alors ressortir les snapshots côté récipient :</p>
+            fusionné, noyant le contexte. Disons qu’on a fait un <code>git merge truth</code> dans <code>master</code>. On peut ressortir les snapshots côté récipient :</p>
 
             <pre class="command-line" data-prompt="$" data-output="2-20"><code class="language-bash">
               git show <u>:2</u>:intro.md
@@ -748,11 +748,11 @@ To git@github.com:tdd/private-tests.git
           </section>
 
           <section id="branches-log-merge">
-            <h2>Log de la divergence lors d’un conflit</h2>
+            <h2>Log de la divergence<br/> lors d’un conflit</h2>
 
             <p>Très rarement, même les snapshots ne suffisent pas à comprendre
-            le problème, et on veut retracer le cheminement du code depuis
-            l’ancêtre commun jusqu’aux têtes de branches.</p>
+            le problème, et on veut retracer le <strong>cheminement du code</strong> depuis
+            l’ancêtre commun jusqu’aux têtes des branches de la fusion.</p>
             <p>C’est faisable à tout moment avec la syntaxe <code>A...B</code>
             déjà vue, mais lors d’une fusion Git a déjà tout le contexte, il
             suffit de faire un <code>--merge</code> (les variantes
@@ -771,7 +771,7 @@ To git@github.com:tdd/private-tests.git
           <section id="branches-merge-abort">
             <h2>Lâcher l’affaire ?</h2>
 
-            <p>Si <strong>vraiment</strong> tu n’y arrives pas pour le moment (manque d’infos), annule la fusion proprement :</p>
+            <p>Si <strong>vraiment</strong> tu n’y arrives pas pour le moment (manque d’infos), tu peux annuler la fusion proprement :</p>
 
             <pre class="command-line" data-prompt="$" data-output="2-20"><code class="language-bash">
               git merge <u>--abort</u>
@@ -798,9 +798,9 @@ To git@github.com:tdd/private-tests.git
               <strong>re</strong>solution</span>
             </p>
 
-            <p>Prend deux empreintes complètes pour chaque conflit (dénuée du chemin, etc.) : une au conflit, une au commit.</p>
+            <p>Prend deux empreintes complètes pour chaque conflit (dénuée du chemin, etc.) :<br/> une au conflit, une au commit.</p>
 
-            <p class="breathing">Assiste les conflits ultérieurs sur le dépôt en ré-utilisant ces empreintes en cas de résolution antérieure.</p>
+            <p class="breathing">Assiste les conflits ultérieurs sur le dépôt en <strong>ré-utilisant ces empreintes</strong><br/> en cas de résolution antérieure.</p>
 
             <pre class="command-line" data-prompt="$"><code class="language-bash">
               git config --global rerere.enabled true
@@ -817,7 +817,7 @@ To git@github.com:tdd/private-tests.git
           <h2>Envie d’en savoir plus ?</h2>
 
           <p>
-            Quelques-uns de nos articles Git : sur<br/>
+            Quelques-uns de nos articles Git : sur
             <a href="https://delicious-insights.com/fr/articles/bien-utiliser-git-merge-et-rebase/">merge vs. rebase</a>,
             <a href="https://delicious-insights.com/fr/articles/git-rerere/">rerere</a>,
             <a href="https://delicious-insights.com/fr/articles/git-log/">le log</a>,
@@ -828,7 +828,7 @@ To git@github.com:tdd/private-tests.git
             <a href="https://delicious-insights.com/fr/articles/git-submodules/">les submodules</a>…
           </p>
 
-          <p><strong><a href="https://delicious-insights.com/fr/formations/git-total/">Notre formation Git qui envoie du pâté</a></strong> (en inter-entreprises comme en intra chez vous !)</p>
+          <p><strong><a href="https://delicious-insights.com/fr/formations/git-total/">Notre formation Git qui envoie du pâté</a></strong><br/> (en inter-entreprises comme en intra chez vous !)</p>
 
           <p>On a des
             <a href="https://cours-video.delicious-insights.com/">cours vidéos</a> sur Git,
@@ -866,7 +866,7 @@ To git@github.com:tdd/private-tests.git
         center: true,
 
         width: '95%',
-        height: '90%',
+        height: '100%',
 
         theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
         transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
